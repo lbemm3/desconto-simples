@@ -1,235 +1,265 @@
-[README.md](https://github.com/user-attachments/files/34229961/README.md)
-# Calculadora de Desconto Comercial Simples
+[README_desconto_simples.md](https://github.com/user-attachments/files/34230066/README_desconto_simples.md)
+# 📉 Calculadora de Desconto Comercial Simples
 
-Calculadora educacional, em um único arquivo HTML, para resolver problemas de **desconto comercial simples** (também chamado de *desconto por fora*), com a **resolução passo a passo** de cada cálculo.
+Calculadora educacional, em um único arquivo HTML, para resolver problemas de **desconto comercial simples** (desconto "por fora") com **resolução passo a passo**.
 
 Desenvolvida pelo **Prof. Laerte Bemm** — Departamento de Matemática, Universidade Estadual de Maringá (UEM).
 
 ---
 
-## Sumário
+## 📑 Sumário
 
-- [Sobre o projeto](#sobre-o-projeto)
-- [Funcionalidades](#funcionalidades)
-- [Fundamentação matemática](#fundamentação-matemática)
-- [Tipos de problema](#tipos-de-problema)
-- [Como usar](#como-usar)
-- [Exemplos resolvidos](#exemplos-resolvidos)
-- [Validações e mensagens de erro](#validações-e-mensagens-de-erro)
-- [Convenções adotadas](#convenções-adotadas)
-- [Tecnologias](#tecnologias)
-- [Estrutura do repositório](#estrutura-do-repositório)
-- [Publicação online](#publicação-online)
-- [Contribuindo](#contribuindo)
-- [Autoria e créditos](#autoria-e-créditos)
-- [Licença](#licença)
+- [📌 Sobre o projeto](#-sobre-o-projeto)
+- [✨ Funcionalidades](#-funcionalidades)
+- [🧮 Fórmulas utilizadas](#-fórmulas-utilizadas)
+- [🗂️ Tipos de problema](#️-tipos-de-problema)
+- [✏️ Exemplos](#️-exemplos)
+- [🚀 Como usar](#-como-usar)
+- [⚠️ Validações e observações](#️-validações-e-observações)
+- [🛠️ Tecnologias](#️-tecnologias)
+- [📁 Estrutura sugerida do repositório](#-estrutura-sugerida-do-repositório)
+- [🔗 Projeto relacionado](#-projeto-relacionado)
+- [👤 Autoria](#-autoria)
+- [📄 Licença](#-licença)
 
 ---
 
-## Sobre o projeto
+## 📌 Sobre o projeto
 
-Na prática financeira, **descontar um título** (uma duplicata ou uma nota promissória, por exemplo) significa antecipar o seu recebimento antes da data de vencimento. Em troca da antecipação, o portador abre mão de parte do valor: essa diferença é o **valor do desconto**.
-
-No **desconto comercial simples**, o desconto incide sempre sobre o **valor nominal** do título, e não sobre o valor efetivamente recebido. Por isso, a **taxa efetiva** cobrada na operação é sempre **maior** que a taxa de desconto anunciada, e a calculadora mostra essa comparação em cada resultado.
-
-O objetivo é didático: além de entregar o resultado, a ferramenta exibe cada fórmula aplicada com os valores substituídos, para que o estudante acompanhe o raciocínio.
-
-## Funcionalidades
-
-- Cinco tipos de problema, selecionáveis por botões.
-- Resolução detalhada passo a passo, com fórmula, substituição e resultado.
-- Cálculo automático da **taxa efetiva** e comparação com a taxa nominal.
-- Prazo em **meses** ou em **dias**, conforme o tipo de problema (com conversão automática, base de 30 dias por mês).
-- Aceita **vírgula ou ponto** como separador decimal (ex.: `2,5` ou `2.5`).
-- Resultados formatados no padrão brasileiro (`R$ 1.234,56`).
-- Validação dos dados com mensagens de erro claras.
-- Layout responsivo, que funciona em computador, tablet e celular.
-- Sem dependências, sem instalação e sem conexão com servidor: tudo roda no navegador.
-
-## Fundamentação matemática
-
-### Notação
+Descontar um título (duplicata, nota promissória etc.) significa antecipar o seu recebimento antes do vencimento, abrindo mão de parte do valor em troca da antecipação. Nesta calculadora:
 
 | Símbolo | Significado |
 |:-------:|-------------|
-| **FV** | Valor nominal do título (valor de face, no vencimento) |
-| **VC** | Valor comercial (valor líquido creditado ao portador) |
-| **VD** | Valor do desconto |
-| **n** | Prazo de antecipação (em períodos) |
-| **i** | Taxa de desconto por período (na forma decimal nas fórmulas) |
-| **i<sub>f</sub>** | Taxa efetiva da operação |
+| $\mathrm{FV}$ | Valor nominal (valor de face / resgate no vencimento) |
+| $\mathrm{VC}$ | Valor comercial (valor líquido efetivamente recebido) |
+| $\mathrm{VD}$ | Valor do desconto, $\mathrm{VD} = \mathrm{FV} - \mathrm{VC}$ |
+| $i$ | Taxa de desconto por período (% a.m.) |
+| $n$ | Prazo de antecipação, em **meses** ou em **dias** (conforme o tipo) |
+| $i_f$ | Taxa efetiva da operação |
 
-### Fórmulas
+No **desconto comercial simples**, a taxa $i$ incide sempre sobre o **valor nominal** $\mathrm{FV}$, e não sobre o valor comercial. Por isso a taxa efetiva cobrada é **sempre maior** que a taxa de desconto anunciada: $i_f > i$.
 
-```
-VD = FV · n · i               valor do desconto
-VC = FV · (1 − n · i)         valor comercial (líquido creditado)
-FV = VC / (1 − n · i)         valor nominal, dado o valor comercial
-n  = VD / (FV · i)            prazo de antecipação
-i  = VD / (FV · n)            taxa de desconto
-i_f = (FV / VC − 1) / n       taxa efetiva (sempre maior que i)
-```
+---
 
-### Por que a taxa efetiva é maior?
+## ✨ Funcionalidades
 
-Como o desconto é calculado sobre FV, mas o portador recebe apenas VC (que é menor que FV), a base sobre a qual o custo realmente incide é VC. Assim:
+- Cinco tipos de problema, selecionáveis por botões.
+- Resolução detalhada passo a passo: fórmula, substituição e resultado.
+- Cálculo automático da **taxa efetiva** e comparação com a taxa nominal.
+- Prazo em **meses** ou **dias** (conversão automática, base de 30 dias por mês).
+- Aceita **vírgula ou ponto** como separador decimal.
+- Resultados no padrão brasileiro (`R$ 1.234,56`).
+- Layout responsivo: computador, tablet e celular.
+- Sem dependências e sem servidor: tudo roda no navegador.
 
-```
-i_f = VD / (VC · n)  >  VD / (FV · n) = i
-```
+---
+
+## 🧮 Fórmulas utilizadas
+
+### Valor do desconto
+
+O desconto cresce linearmente com o prazo e incide sobre o valor nominal:
+
+$$
+\boxed{\;\mathrm{VD} \;=\; \mathrm{FV}\cdot n\cdot i\;}
+$$
+
+### Valor comercial
+
+$$
+\boxed{\;\mathrm{VC} \;=\; \mathrm{FV}-\mathrm{VD} \;=\; \mathrm{FV}\cdot\underbrace{(1-n\,i)}_{\text{fator de desconto}}\;}
+$$
+
+### Valor nominal (dado o valor comercial)
+
+Isolando $\mathrm{FV}$ na expressão anterior:
+
+$$
+\boxed{\;\mathrm{FV} \;=\; \frac{\mathrm{VC}}{\,1-n\,i\,}\;}
+$$
+
+### Prazo de antecipação
+
+$$
+\boxed{\;n \;=\; \frac{\mathrm{VD}}{\mathrm{FV}\cdot i}\;}
+$$
+
+### Taxa de desconto
+
+$$
+\boxed{\;i \;=\; \frac{\mathrm{VD}}{\mathrm{FV}\cdot n}\;}
+$$
+
+### Taxa efetiva
+
+A taxa efetiva toma como base o valor realmente recebido, $\mathrm{VC}$:
+
+$$
+i_f \;=\; \frac{1}{n}\left(\frac{\mathrm{FV}}{\mathrm{VC}}-1\right) \;=\; \boxed{\;\frac{\mathrm{VD}}{\mathrm{VC}\cdot n} \;=\; \frac{i}{\,1-n\,i\,}\;}
+$$
+
+Como $\mathrm{VC}<\mathrm{FV}$ (ou, de forma equivalente, $0<1-n\,i<1$), tem-se $i_f>i$.
 
 ### Condição de existência
 
-Para que o valor comercial seja positivo, é necessário que **n · i < 1**. A calculadora verifica essa condição e avisa quando ela é violada.
+Para que $\mathrm{VC}>0$ é necessário que
 
-## Tipos de problema
+$$
+n\cdot i \;<\; 1
+$$
 
-| # | Objetivo | Dados de entrada | Unidade do prazo |
-|:-:|----------|------------------|:----------------:|
-| 1 | Calcular **VD** e **VC** | FV, n, i | meses |
-| 2 | Calcular o **prazo n** | FV, VC, i | resultado em meses e em dias |
-| 3 | Calcular **VC** | FV, n, i | dias |
-| 4 | Calcular **FV** | VC, n, i | dias |
-| 5 | Calcular a **taxa i** | FV, VC, n | meses |
+### Resumo
 
-A taxa de desconto **i** é sempre informada em **% ao mês** (a.m.).
+| Grandeza | Fórmula |
+|:--------:|:-------:|
+| $\mathrm{VD}$ | $\mathrm{FV}\cdot n\cdot i$ |
+| $\mathrm{VC}$ | $\mathrm{FV}\,(1-n\,i)$ |
+| $\mathrm{FV}$ | $\dfrac{\mathrm{VC}}{1-n\,i}$ |
+| $n$ | $\dfrac{\mathrm{VD}}{\mathrm{FV}\cdot i}$ |
+| $i$ | $\dfrac{\mathrm{VD}}{\mathrm{FV}\cdot n}$ |
+| $i_f$ | $\dfrac{1}{n}\left(\dfrac{\mathrm{FV}}{\mathrm{VC}}-1\right)=\dfrac{i}{1-n\,i}$ |
 
-## Como usar
+---
 
-### Opção 1: abrir direto no navegador
+## 🗂️ Tipos de problema
 
-1. Baixe o arquivo `desconto-comercial-simples.html` (ou clone o repositório).
-2. Dê um duplo clique no arquivo. Ele abre no navegador padrão.
+A calculadora possui cinco modos, selecionáveis por botões:
 
-### Opção 2: clonar o repositório
+| Tipo | Dados de entrada | Resultados | Prazo |
+|:----:|------------------|------------|:-----:|
+| **1** | $\mathrm{FV}$, $n$, $i$ | $\mathrm{VD}$, $\mathrm{VC}$, $i_f$ | meses |
+| **2** | $\mathrm{FV}$, $\mathrm{VC}$, $i$ | $n$ (em meses e em dias), $i_f$ | resultado |
+| **3** | $\mathrm{FV}$, $n$, $i$ | $\mathrm{VD}$, $\mathrm{VC}$, $i_f$ | dias |
+| **4** | $\mathrm{VC}$, $n$, $i$ | $\mathrm{FV}$, $\mathrm{VD}$, $i_f$ | dias |
+| **5** | $\mathrm{FV}$, $\mathrm{VC}$, $n$ | $i$, $i_f$ | meses |
 
-```bash
-git clone https://github.com/<seu-usuario>/<nome-do-repositorio>.git
-cd <nome-do-repositorio>
-```
+A taxa de desconto $i$ é sempre informada em **% ao mês**. Em todos os casos, o resultado é apresentado em etapas: dados, conversão do prazo (quando necessária), valores calculados e verificação da taxa efetiva.
 
-Depois, abra o arquivo HTML no navegador. Não é preciso instalar nada.
+---
 
-### Usando a calculadora
-
-1. Escolha o tipo de problema nos botões do topo.
-2. Preencha os campos solicitados (use valores positivos).
-3. Clique em **▶ Calcular**.
-4. Leia a resolução passo a passo exibida abaixo do botão.
-
-## Exemplos resolvidos
+## ✏️ Exemplos
 
 Os valores abaixo podem ser digitados diretamente na calculadora para conferência.
 
-### Tipo 1: VD e VC
+**Tipo 1** — Título de R$ 2.000,00, antecipado 3 meses, taxa de 2,5% a.m.
 
-**Dados:** FV = R$ 2.000,00; n = 3 meses; i = 2,5% a.m.
+$$
+\mathrm{VD} = 2000\cdot 3\cdot 0{,}025
+$$
 
-- VD = 2.000 · 3 · 0,025 = **R$ 150,00**
-- VC = 2.000 − 150 = **R$ 1.850,00**
-- i<sub>f</sub> = (2.000 / 1.850 − 1) / 3 ≈ **2,7027% a.m.**
+- $\mathrm{VD} =$ **R$ 150,00**
+- $\mathrm{VC} = 2000-150 =$ **R$ 1.850,00**
+- $i_f = \dfrac{1}{3}\left(\dfrac{2000}{1850}-1\right) \approx$ **2,7027% a.m.**
 
-### Tipo 2: prazo de antecipação
+**Tipo 2** — $\mathrm{FV}$ = R$ 6.800,00, $\mathrm{VC}$ = R$ 6.000,00, $i$ = 3,2% a.m.
 
-**Dados:** FV = R$ 6.800,00; VC = R$ 6.000,00; i = 3,2% a.m.
+$$
+n = \frac{800}{6800\cdot 0{,}032}
+$$
 
-- VD = 6.800 − 6.000 = R$ 800,00
-- n = 800 / (6.800 · 0,032) ≈ **3,6765 meses**, ou cerca de **110,29 dias**
+- $n \approx$ **3,6765 meses**, ou cerca de **110,29 dias**
+- $i_f \approx$ **3,63% a.m.**
 
-### Tipo 3: valor comercial com prazo em dias
+**Tipo 3** — $\mathrm{FV}$ = R$ 34.000,00, $n$ = 41 dias, $i$ = 4,7% a.m.
 
-**Dados:** FV = R$ 34.000,00; n = 41 dias; i = 4,7% a.m.
+$$
+n=\frac{41}{30}\approx 1{,}3667 \text{ meses}
+$$
 
-- n = 41 / 30 ≈ 1,3667 mês
-- VD = 34.000 · 1,3667 · 0,047 ≈ **R$ 2.184,07**
-- VC = 34.000 − 2.184,07 ≈ **R$ 31.815,93**
+- $\mathrm{VD} = 34000\cdot 1{,}3667\cdot 0{,}047 \approx$ **R$ 2.184,07**
+- $\mathrm{VC} \approx$ **R$ 31.815,93**
+- $i_f \approx$ **5,02% a.m.**
 
-### Tipo 4: valor nominal
+**Tipo 4** — $\mathrm{VC}$ = R$ 70.190,00, $n$ = 138 dias, $i$ = 5,2% a.m.
 
-**Dados:** VC = R$ 70.190,00; n = 138 dias; i = 5,2% a.m.
+$$
+n=\frac{138}{30}=4{,}6 \text{ meses}, \qquad
+\mathrm{FV}=\frac{70190}{1-4{,}6\cdot 0{,}052}=\frac{70190}{0{,}7608}
+$$
 
-- n = 138 / 30 = 4,6 meses
-- Fator de desconto = 1 − 4,6 · 0,052 = 0,7608
-- FV = 70.190 / 0,7608 ≈ **R$ 92.258,14**
+- $\mathrm{FV} \approx$ **R$ 92.258,14**
 
-### Tipo 5: taxa de desconto
+**Tipo 5** — $\mathrm{FV}$ = R$ 1.000,00, $\mathrm{VC}$ = R$ 880,00, $n$ = 4 meses
 
-**Dados:** FV = R$ 1.000,00; VC = R$ 880,00; n = 4 meses
+$$
+i = \frac{120}{1000\cdot 4}
+$$
 
-- VD = 1.000 − 880 = R$ 120,00
-- i = 120 / (1.000 · 4) = **3% a.m.**
-- i<sub>f</sub> = (1.000 / 880 − 1) / 4 ≈ **3,4091% a.m.**
+- $i =$ **3% a.m.**
+- $i_f = \dfrac{1}{4}\left(\dfrac{1000}{880}-1\right) \approx$ **3,4091% a.m.**
 
-## Validações e mensagens de erro
+---
 
-A calculadora impede resultados sem sentido econômico:
+## 🚀 Como usar
 
-| Situação | Mensagem exibida |
-|----------|------------------|
-| Campo vazio, texto inválido, zero ou valor negativo | Pede o preenchimento de todos os campos com valores positivos |
-| n · i ≥ 1 (tipos 1, 3 e 4) | Informa que a condição é violada e que o resultado não tem sentido econômico |
-| VC ≥ FV (tipos 2 e 5) | Informa que o valor comercial deve ser menor que o valor nominal |
+### Localmente
 
-## Convenções adotadas
+1. Baixe o arquivo `desconto-comercial-simples.html` (ou clone o repositório):
+   ```bash
+   git clone https://github.com/SEU-USUARIO/NOME-DO-REPOSITORIO.git
+   ```
+2. Abra o arquivo no navegador (duplo clique ou `Arquivo → Abrir`).
+3. Escolha o tipo de problema, preencha os campos e clique em **▶ Calcular**.
 
-- **Mês comercial de 30 dias**: a conversão entre dias e meses usa `n(meses) = n(dias) / 30`.
-- **Taxa de desconto em % ao mês**: o programa divide por 100 internamente.
-- **Separador decimal**: a vírgula é convertida em ponto antes do cálculo.
-- **Formatação de saída**: números exibidos em `pt-BR`, com 2 casas decimais para valores monetários e 4 casas para taxas e prazos.
+Não há instalação, build nem dependências: basta um navegador moderno.
 
-## Tecnologias
+### Online com GitHub Pages
+
+1. No repositório, vá em **Settings → Pages**.
+2. Em **Build and deployment**, selecione **Deploy from a branch**.
+3. Escolha a branch `main` e a pasta `/ (root)` e clique em **Save**.
+4. Se quiser que o site abra direto na calculadora, renomeie o arquivo para `index.html`.
+5. Após alguns instantes, a calculadora estará disponível em:
+   ```
+   https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/
+   ```
+
+---
+
+## ⚠️ Validações e observações
+
+- Todos os campos devem ser preenchidos com valores **positivos**.
+- Nos Tipos 1, 3 e 4, deve valer $n\cdot i<1$; caso contrário, $\mathrm{VC}\le 0$ (ou $\mathrm{FV}$ indefinido) e a calculadora exibe um aviso.
+- Nos Tipos 2 e 5, deve valer $\mathrm{VC}<\mathrm{FV}$.
+- A conversão de dias para meses usa o **mês comercial de 30 dias**: $n_{\text{meses}} = n_{\text{dias}}/30$.
+- A taxa $i$ é informada em porcentagem; o programa a converte internamente para a forma decimal.
+- Os campos aceitam **vírgula ou ponto** como separador decimal (ex.: `2,5` ou `2.5`).
+- Valores monetários são exibidos com 2 casas decimais; taxas e prazos, com 4.
+- A ferramenta tem finalidade **didática**; não substitui o cálculo oficial de uma instituição financeira.
+
+---
+
+## 🛠️ Tecnologias
 
 - HTML5
-- CSS3 (Grid e Flexbox, layout responsivo)
-- JavaScript puro (*vanilla*), sem frameworks nem bibliotecas externas
+- CSS3 (layout responsivo com Grid e Flexbox)
+- JavaScript puro (*vanilla*), sem bibliotecas externas
 
-## Estrutura do repositório
+---
+
+## 📁 Estrutura sugerida do repositório
 
 ```
-.
-├── desconto-comercial-simples.html   # aplicação completa (HTML + CSS + JS)
-└── README.md                         # este arquivo
+├── index.html     # a calculadora (ou desconto-comercial-simples.html)
+├── README.md      # este arquivo
+└── LICENSE        # licença (opcional)
 ```
 
-> Dica: para publicar com o GitHub Pages usando a URL raiz, renomeie o arquivo HTML para `index.html`.
+---
 
-## Publicação online
+## 🔗 Projeto relacionado
 
-### GitHub Pages
+Esta calculadora tem uma versão irmã, a **Calculadora de Desconto Composto Comercial**, que trata o desconto por fora com a taxa incidindo sucessivamente, período a período, em vez de linearmente sobre o valor nominal.
 
-1. No repositório, abra **Settings → Pages**.
-2. Em **Source**, escolha **Deploy from a branch**.
-3. Selecione a branch `main` e a pasta `/ (root)`, e salve.
-4. Após alguns minutos, a calculadora ficará disponível em `https://<seu-usuario>.github.io/<nome-do-repositorio>/`.
+---
 
-### Outras opções
-
-Por ser um único arquivo estático, o projeto também pode ser hospedado em Vercel, Netlify, Cloudflare Pages ou em qualquer servidor web comum.
-
-## Contribuindo
-
-Sugestões e correções são bem-vindas:
-
-1. Faça um *fork* do repositório.
-2. Crie uma branch para a sua alteração: `git checkout -b minha-melhoria`.
-3. Faça o *commit*: `git commit -m "Descreve a melhoria"`.
-4. Envie para o seu fork: `git push origin minha-melhoria`.
-5. Abra um *Pull Request*.
-
-Ideias para evoluções futuras:
-
-- Versão para **desconto comercial composto**.
-- Exportação da resolução em PDF.
-- Opção de prazo em dias também nos tipos 1, 2 e 5.
-- Modo escuro.
-
-## Autoria e créditos
+## 👤 Autoria
 
 **Prof. Laerte Bemm**
-Departamento de Matemática, Universidade Estadual de Maringá (UEM)
+Departamento de Matemática — Universidade Estadual de Maringá (UEM)
 
-Ferramenta de uso educacional.
+---
 
-## Licença
+## 📄 Licença
 
-Defina aqui a licença do projeto. Sugestão: [MIT](https://opensource.org/licenses/MIT) para uso livre, ou [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.pt-br) caso queira exigir atribuição ao autor.
+Defina a licença de sua preferência (por exemplo, [MIT](https://opensource.org/licenses/MIT)) e adicione o arquivo `LICENSE` ao repositório. Para uso estritamente acadêmico, você também pode indicar aqui: *"Material educacional de uso livre, com citação da autoria."*
