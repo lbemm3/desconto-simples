@@ -1,4 +1,4 @@
-[README_desconto_simples.md](https://github.com/user-attachments/files/34230066/README_desconto_simples.md)
+[README_desconto_simples (1).md](https://github.com/user-attachments/files/34230086/README_desconto_simples.1.md)
 # 📉 Calculadora de Desconto Comercial Simples
 
 Calculadora educacional, em um único arquivo HTML, para resolver problemas de **desconto comercial simples** (desconto "por fora") com **resolução passo a passo**.
@@ -61,13 +61,13 @@ No **desconto comercial simples**, a taxa $i$ incide sempre sobre o **valor nomi
 O desconto cresce linearmente com o prazo e incide sobre o valor nominal:
 
 $$
-\boxed{\;\mathrm{VD} \;=\; \mathrm{FV}\cdot n\cdot i\;}
+\mathrm{VD} = \mathrm{FV}\cdot n\cdot i
 $$
 
 ### Valor comercial
 
 $$
-\boxed{\;\mathrm{VC} \;=\; \mathrm{FV}-\mathrm{VD} \;=\; \mathrm{FV}\cdot\underbrace{(1-n\,i)}_{\text{fator de desconto}}\;}
+\mathrm{VC} = \mathrm{FV}-\mathrm{VD} = \mathrm{FV}\cdot\underbrace{(1-n\cdot i)}_{\text{fator de desconto}}
 $$
 
 ### Valor nominal (dado o valor comercial)
@@ -75,19 +75,19 @@ $$
 Isolando $\mathrm{FV}$ na expressão anterior:
 
 $$
-\boxed{\;\mathrm{FV} \;=\; \frac{\mathrm{VC}}{\,1-n\,i\,}\;}
+\mathrm{FV} = \frac{\mathrm{VC}}{1-n\cdot i}
 $$
 
 ### Prazo de antecipação
 
 $$
-\boxed{\;n \;=\; \frac{\mathrm{VD}}{\mathrm{FV}\cdot i}\;}
+n = \frac{\mathrm{VD}}{\mathrm{FV}\cdot i}
 $$
 
 ### Taxa de desconto
 
 $$
-\boxed{\;i \;=\; \frac{\mathrm{VD}}{\mathrm{FV}\cdot n}\;}
+i = \frac{\mathrm{VD}}{\mathrm{FV}\cdot n}
 $$
 
 ### Taxa efetiva
@@ -95,17 +95,17 @@ $$
 A taxa efetiva toma como base o valor realmente recebido, $\mathrm{VC}$:
 
 $$
-i_f \;=\; \frac{1}{n}\left(\frac{\mathrm{FV}}{\mathrm{VC}}-1\right) \;=\; \boxed{\;\frac{\mathrm{VD}}{\mathrm{VC}\cdot n} \;=\; \frac{i}{\,1-n\,i\,}\;}
+i_f = \frac{1}{n}\left(\frac{\mathrm{FV}}{\mathrm{VC}}-1\right) = \frac{\mathrm{VD}}{\mathrm{VC}\cdot n} = \frac{i}{1-n\cdot i}
 $$
 
-Como $\mathrm{VC}<\mathrm{FV}$ (ou, de forma equivalente, $0<1-n\,i<1$), tem-se $i_f>i$.
+Como $\mathrm{VC}<\mathrm{FV}$ (ou, de forma equivalente, $0<1-n\cdot i<1$), tem-se $i_f>i$.
 
 ### Condição de existência
 
 Para que $\mathrm{VC}>0$ é necessário que
 
 $$
-n\cdot i \;<\; 1
+n\cdot i < 1
 $$
 
 ### Resumo
@@ -113,11 +113,11 @@ $$
 | Grandeza | Fórmula |
 |:--------:|:-------:|
 | $\mathrm{VD}$ | $\mathrm{FV}\cdot n\cdot i$ |
-| $\mathrm{VC}$ | $\mathrm{FV}\,(1-n\,i)$ |
-| $\mathrm{FV}$ | $\dfrac{\mathrm{VC}}{1-n\,i}$ |
+| $\mathrm{VC}$ | $\mathrm{FV}(1-n\cdot i)$ |
+| $\mathrm{FV}$ | $\dfrac{\mathrm{VC}}{1-n\cdot i}$ |
 | $n$ | $\dfrac{\mathrm{VD}}{\mathrm{FV}\cdot i}$ |
 | $i$ | $\dfrac{\mathrm{VD}}{\mathrm{FV}\cdot n}$ |
-| $i_f$ | $\dfrac{1}{n}\left(\dfrac{\mathrm{FV}}{\mathrm{VC}}-1\right)=\dfrac{i}{1-n\,i}$ |
+| $i_f$ | $\dfrac{1}{n}\left(\dfrac{\mathrm{FV}}{\mathrm{VC}}-1\right)=\dfrac{i}{1-n\cdot i}$ |
 
 ---
 
